@@ -27,6 +27,34 @@ func NewLogger(prefix string) *Logger {
 	}
 }
 
-func (Logger) Debug(v ...interface{}) {
+func (logger *Logger) Debug(v ...interface{}) {
+	logger.debug.Println(v...)
+}
 
+func (logger *Logger) Info(v ...interface{}) {
+	logger.info.Println(v...)
+}
+
+func (logger *Logger) Warning(v ...interface{}) {
+	logger.warning.Println(v...)
+}
+
+func (logger *Logger) Err(v ...interface{}) {
+	logger.err.Println(v...)
+}
+
+func (logger *Logger) Debugf(format string, v ...interface{}) {
+	logger.debug.Printf(format, v...)
+}
+
+func (logger *Logger) Infof(format string, v ...interface{}) {
+	logger.info.Printf(format, v...)
+}
+
+func (logger *Logger) Warningf(format string, v ...interface{}) {
+	logger.warning.Printf(format, v...)
+}
+
+func (logger *Logger) Errorf(format string, v ...interface{}) {
+	logger.err.Printf(format, v...)
 }
