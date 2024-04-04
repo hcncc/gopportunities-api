@@ -8,6 +8,6 @@ import (
 
 func DeleteOpeningHandler(context *gin.Context) {
 	context.JSON(http.StatusOK, gin.H{
-		"message": "DELETE Opening Route",
+		"message": "GET Openings Route",
 	})
 }
