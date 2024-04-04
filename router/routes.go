@@ -1,41 +1,20 @@
 package router
 
 import (
-	"net/http"
-
 	"github.com/gin-gonic/gin"
+	"github.com/hcncc/gopportunities-api/handler"
 )
 
 func initializeRoutes(router *gin.Engine) {
 	routerApi := router.Group("/api")
 
-	routerApi.GET("/opening", func(context *gin.Context) {
-		context.JSON(http.StatusOK, gin.H{
-			"message": "GET Opening Route",
-		})
-	})
+	routerApi.GET("/opening", handler.ShowOpeningHandler)
 
-	routerApi.POST("/opening", func(context *gin.Context) {
-		context.JSON(http.StatusOK, gin.H{
-			"message": "POST Opening Route",
-		})
-	})
+	routerApi.POST("/opening", handler.StoreOpeningHandler)
 
-	routerApi.PUT("/opening", func(context *gin.Context) {
-		context.JSON(http.StatusOK, gin.H{
-			"message": "PUT Opening Route",
-		})
-	})
+	routerApi.PUT("/opening", handler.UpdateOpeningHandler)
 
-	routerApi.DELETE("/opening", func(context *gin.Context) {
-		context.JSON(http.StatusOK, gin.H{
-			"message": "DELETE Opening Route",
-		})
-	})
+	routerApi.DELETE("/opening", handler.DeleteOpeningHandler)
 
-	routerApi.GET("/openings", func(context *gin.Context) {
-		context.JSON(http.StatusOK, gin.H{
-			"message": "GET Openings Route",
-		})
-	})
+	routerApi.GET("/openings", handler.IndexOpeningHandler)
 }
