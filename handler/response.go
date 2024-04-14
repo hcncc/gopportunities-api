@@ -39,4 +39,16 @@ func sendSuccess(context *gin.Context, operation string, data ...interface{}) {
 			"data":    data,
 		})
 	}
+
+	if operation == "All" {
+		context.JSON(http.StatusOK, gin.H{
+			"data": data[0],
+		})
+	}
+
+	if operation == "Unique" {
+		context.JSON(http.StatusFound, gin.H{
+			"data": data,
+		})
+	}
 }
