@@ -7,6 +7,17 @@ import (
 	"github.com/hcncc/gopportunities-api/schemas"
 )
 
+// @BasePath /api
+// @Summary Create Opening
+// @Description Create a new job opening
+// @Tags Openings
+// @Accept json
+// @Produce json
+// @Param request body CreateOpeningRequest true "Request Body"
+// @Success 201 {object} StoreOpeningResponse
+// @Failure 400 {object} ErrorResponse
+// @Failure 500 {object} ErrorResponse
+// @Router /opening [post]
 func StoreOpeningHandler(context *gin.Context) {
 	request := CreateOpeningRequest{}
 

@@ -4,6 +4,7 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
+	"github.com/hcncc/gopportunities-api/schemas"
 )
 
 func sendError(context *gin.Context, code int, message string) {
@@ -51,4 +52,13 @@ func sendSuccess(context *gin.Context, operation string, data ...interface{}) {
 			"data": data,
 		})
 	}
+}
+
+type ErrorResponse struct {
+	Message   string `json:"message"`
+	ErrorCode string `json:"errorCode"`
+}
+type StoreOpeningResponse struct {
+	Message string                  `json:"message"`
+	Data    schemas.OpeningResponse `json:"data"`
 }

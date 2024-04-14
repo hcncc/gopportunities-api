@@ -1,7 +1,7 @@
 package router
 
 import (
-	"github.com/gopportunities-api/docs"
+	"github.com/hcncc/gopportunities-api/docs"
 	"github.com/hcncc/gopportunities-api/handler"
 
 	"github.com/gin-gonic/gin"
@@ -29,5 +29,6 @@ func initializeRoutes(router *gin.Engine) {
 	routerApi.DELETE("/opening", handler.DeleteOpeningHandler)
 
 	routerApi.GET("/openings", handler.IndexOpeningHandler)
+
 	routerApi.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerfiles.Handler))
 }
