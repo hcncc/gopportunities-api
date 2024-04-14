@@ -1,6 +1,7 @@
 package handler
 
 import (
+	"fmt"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -30,7 +31,7 @@ func UpdateOpeningHandler(context *gin.Context) {
 	opening := schemas.Opening{}
 
 	if err := db.First(&opening, id).Error; err != nil {
-		sendError(context, http.StatusNotFound, "Opening not found")
+		sendError(context, http.StatusNotFound, fmt.Sprintf("opening: %s not found", id))
 		return
 	}
 
