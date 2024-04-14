@@ -36,12 +36,31 @@ func UpdateOpeningHandler(context *gin.Context) {
 	}
 
 	// Mesclando os dados
-	opening.Role = request.Role
-	opening.Company = request.Company
-	opening.Link = request.Link
-	opening.Location = request.Location
-	opening.Salary = request.Salary
-	opening.Remote = *request.Remote
+
+	if request.Role == "" {
+		opening.Role = request.Role
+	}
+
+	if request.Location == "" {
+		opening.Location = request.Location
+	}
+
+	if request.Company == "" {
+		opening.Company = request.Company
+
+	}
+
+	if request.Link == "" {
+		opening.Link = request.Link
+	}
+
+	if request.Remote == nil {
+		opening.Remote = *request.Remote
+	}
+
+	if request.Salary <= 0 {
+		opening.Salary = request.Salary
+	}
 
 	if err := db.Save(&opening).Error; err != nil {
 		sendError(context, http.StatusInternalServerError, "Error in Update Opening")
